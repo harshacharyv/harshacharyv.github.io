@@ -1,7 +1,275 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harsha Chary V | Portfolio</title>
+  
+  <!-- Font Awesome for Contact Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+  />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0b0f19;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-x: hidden;
+    }
+
+    /* Top Progress / Hero Section */
+    .hero-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #10b981;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 1.5rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.7; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.7; }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      max-width: 800px;
+      line-height: 1.2;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Terminal-style Progress Container */
+    .progress-box {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+      font-family: 'Fira Code', monospace;
+      text-align: left;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 0.75rem;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.75rem;
+    }
+
+    .progress-bar-fill {
+      width: 65%;
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      border-radius: 4px;
+      animation: shimmer 2s infinite linear;
+    }
+
+    .progress-footer {
+      font-size: 0.8rem;
+      color: #38bdf8;
+    }
+
+    /* Lower Half: Centered Contact Section */
+    .contact-section {
+      width: 100%;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(180deg, rgba(11, 15, 25, 0) 0%, rgba(15, 23, 42, 0.6) 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .contact-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-subtitle {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .social-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1e293b;
+      color: #e2e8f0;
+      padding: 0.85rem 1.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .social-card i {
+      font-size: 1.2rem;
+    }
+
+    /* Specific Icon Colors on Hover */
+    .social-card.instagram:hover {
+      background: rgba(225, 48, 108, 0.15);
+      border-color: rgba(225, 48, 108, 0.4);
+      color: #e1306c;
+      transform: translateY(-3px);
+    }
+
+    .social-card.linkedin:hover {
+      background: rgba(10, 102, 194, 0.15);
+      border-color: rgba(10, 102, 194, 0.4);
+      color: #0a66c2;
+      transform: translateY(-3px);
+    }
+
+    .social-card.email:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
 <body>
-    <h1>Hello, I'm a Harsha Chary V, Cyber Security Practitioner.</h1>
-    <p>Portfolio coming soon.</p>
+
+  <!-- Top Section: Work In Progress Status -->
+  <main class="hero-section">
+    <div class="badge">
+      <span class="pulse-dot"></span>
+      <span>SYSTEM_BUILD_IN_PROGRESS</span>
+    </div>
+
+    <h1>Hello, I'm <span>Harsha Chary V</span></h1>
+    <p class="subtitle">Cyber Security Practitioner specializing in network defense, threat analysis, and ethical hacking.</p>
+
+    <!-- Interactive Progress Box -->
+    <div class="progress-box">
+      <div class="progress-header">
+        <span>Portfolio Deployment</span>
+        <span>65%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill"></div>
+      </div>
+      <div class="progress-footer">
+        <code>> status: compiling modules & security writeups...</code>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Section: Centered Contact Links -->
+  <footer class="contact-section">
+    <h2 class="contact-title">Get In Touch</h2>
+    <p class="contact-subtitle">Feel free to reach out for collaborations or security inquiries.</p>
+
+    <div class="social-links">
+      <!-- Instagram Link -->
+      <a href="https://instagram.com/your_username" target="_blank" class="social-card instagram">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <!-- LinkedIn Link -->
+      <a href="https://linkedin.com/in/your_username" target="_blank" class="social-card linkedin">
+        <i class="fa-brands fa-linkedin-in"></i>
+        <span>LinkedIn</span>
+      </a>
+
+      <!-- Mail Link -->
+      <a href="mailto:your.email@example.com" class="social-card email">
+        <i class="fa-regular fa-envelope"></i>
+        <span>Email Me</span>
+      </a>
+    </div>
+  </footer>
+
 </body>
 </html>
